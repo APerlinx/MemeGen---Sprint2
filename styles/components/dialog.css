@@ -1,0 +1,44 @@
+.dialog {
+  background-color: #fff;
+  max-width: max-content;
+  border-radius: 9px;
+  box-shadow: 0px 5px 13px 5px rgba(0, 0, 0, 0.39);
+  animation: fadeIn 1s, slideInDialog 0.5s linear;
+}
+
+.dialog::backdrop {
+  background-color: #0000ff7f;
+}
+
+.dialog-content h2 {
+  margin-bottom: 1rem;
+}
+
+.dialog .dialog-content button {
+  width: 120px;
+  height: 30px;
+  align-self: center;
+  margin-top: 20px;
+  background-color: transparent;
+  border-radius: 9px;
+  border: 1px solid #777;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInDialog {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

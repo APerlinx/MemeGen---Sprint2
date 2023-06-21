@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script
+      defer
+      src="https://kit.fontawesome.com/0d3f998bf1.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" href="styles/styles.css" />
+
+    <title>MemeGen</title>
+  </head>
+
+  <body onload="onInit()" class="body-layout">
+   
+    <header class="main-header-container">
+      <div class="main-header main-layout flex space-between align-center">
+        <div class="main-logo">MemeGen</div>
+        <ul class="main-nav flex clean-list align-center">
+          <li><a href="#" class="nav-link">Gallery</a></li>
+          <li><a href="#" class="nav-link">About</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropbtn nav-link active">Lang</a>
+            <ul class="dropdown-content clean-list">
+              <li><a href="#">English</a></li>
+              <li><a href="#">Hebrew</a></li>
+            
+            </ul>
+          </li>
+        </ul>
+        <button onclick="toggleMenu()" class="menu-toggle">☰</button>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <p>Search Box</p>
+      <section class="gallery"> 
+    
+      </section>
+    </main>
+
+
+    <dialog class="dialog">
+      <div class="editor-dialog">
+        <div class="canvas-container">
+          <canvas id="my-canvas" height="400" width="400"></canvas>
+      </div>
+      <section class="editor">
+        <label for="editor-txt">Change text</label>
+        <input type="text" placeholder="enter text here" class="editor-txt" oninput="onSetLineTxt(this.value)">
+      </section>
+        <form method="dialog">
+          <!-- <button class="modal-btn">Close</button> -->
+        </form>
+      </div>
+    </dialog>
+
+    <footer>I am a footer</footer>
+
+    <script src="js/service/memeService.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/galleryController.js"></script>
+    <script src="js/memeController.js"></script>
+
+    <script>
+     // dialog
+const elDialog = document.querySelector('.dialog')
+elDialog.addEventListener('click', ev => {
+  const dialogDimensions = elDialog.getBoundingClientRect()
+  if (
+    ev.clientX < dialogDimensions.left ||
+    ev.clientX > dialogDimensions.right ||
+    ev.clientY < dialogDimensions.top ||
+    ev.clientY > dialogDimensions.bottom
+  ) {
+    elDialog.close()
+  }
+})
+
+function openDialog() {
+  document.querySelector('.dialog').showModal()
+}
+
+function closeDialog() {
+  document.querySelector('.dialog').close()
+}
+
+    </script>
+  </body>
+</html>

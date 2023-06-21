@@ -1,0 +1,9 @@
+.body-layout {
+  display: grid;
+  grid-template-columns: minmax(20px, 1fr) 980px minmax(20px, 1fr);
+}
+
+.main-layout {
+  padding-left: 1.6rem;
+  padding-right: 1.6rem;
+}
