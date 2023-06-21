@@ -1,3 +1,4 @@
+
 .canvas-container {
     margin: 10px auto;
   }
@@ -8,6 +9,11 @@
     background-color: white;
     border: 1px solid black;
     border-radius: 10px;
+  }
+
+    .canvas-container {
+    grid-area: canvas;
+    width: 100%; /* Add this to ensure the canvas container takes up the available width */
   }
   
   .editor-dialog {
@@ -22,10 +28,53 @@
     grid-area: editor;
     background-color: #c0bcbc;
     border-radius: 10px;
+    display: grid;
+    grid-template-rows:  2fr 1fr 1fr;
+    grid-template-areas: 
+    "control-box"
+    "addEmoji"
+    "share-download";
+  }
+
+  .editor-txt {
+    grid-area: control-box;
+    width: 50%;
+    place-self: center;
   }
   
-  .canvas-container {
-    grid-area: canvas;
-    width: 100%; /* Add this to ensure the canvas container takes up the available width */
+  .download-link {
+    grid-area: share-download;
+    justify-self: end;
+    align-self: center;
+    margin-inline-end: 1em;
   }
-  
+  .decrease-txt-size{
+    grid-area: control-box;
+    width: 40px;
+    height: 40px;
+    align-self: center;
+    justify-self: center;
+    margin-top: 90px;
+    margin-inline-end: 80px;
+  }
+
+  .increase-txt-size {
+    grid-area: control-box;
+    width: 40px;
+    height: 40px;
+    align-self: center;
+    justify-self: center;
+    margin-top: 90px;
+  }
+
+  #txt-color {
+    grid-area: control-box;
+    place-self: center;
+    margin-top: 90px;
+    margin-inline-start: 90px;
+  }
+
+  .icon {
+    width: 100%;
+  }
+

@@ -51,8 +51,12 @@
           <canvas id="my-canvas" height="400" width="400"></canvas>
       </div>
       <section class="editor">
-        <label for="editor-txt">Change text</label>
+        <!-- <label for="editor-txt">Change text</label> -->
         <input type="text" placeholder="enter text here" class="editor-txt" oninput="onSetLineTxt(this.value)">
+        <input type="color" id="txt-color" onchange="onChangeTxtColor(this.value)" title="TextColor">
+        <button class="decrease-txt-size" value="-10" onclick="onChangeTxtSize(this.value)"><img src="img/Icons/decrease font - icon.png" class="icon"></button>
+        <button class="increase-txt-size" value="10" onclick="onChangeTxtSize(this.value)"><img src="img/Icons/increase font - icon.png" class="icon"></button>
+        <a href="#" onclick="downloadMeme(this)" download="file-name" class="download-link">Download</a>
       </section>
         <form method="dialog">
           <!-- <button class="modal-btn">Close</button> -->
@@ -66,6 +70,7 @@
     <script src="js/main.js"></script>
     <script src="js/galleryController.js"></script>
     <script src="js/memeController.js"></script>
+    <script src="js/main.js"></script>
 
     <script>
      // dialog

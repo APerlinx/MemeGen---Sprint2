@@ -3,7 +3,6 @@
 }
 
 html {
-  font-family: Lato-regular, sans-serif;
   font-weight: 400;
   color: var(--clr1);
   line-height: 1.25;
@@ -11,7 +10,8 @@ html {
 
 body {
   background-color: #9387ab;
-  font: 400 10px "Lato", sans-serif;
+  font: 400 10px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   text-align: center;
   margin: 0;
 }
