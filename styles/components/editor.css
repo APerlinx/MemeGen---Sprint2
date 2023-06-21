@@ -39,7 +39,8 @@
   .editor-txt {
     grid-area: control-box;
     width: 50%;
-    place-self: center;
+    justify-self: center;
+    align-self: start;
   }
   
   .download-link {
@@ -54,7 +55,6 @@
     height: 40px;
     align-self: center;
     justify-self: center;
-    margin-top: 90px;
     margin-inline-end: 80px;
   }
 
@@ -64,17 +64,35 @@
     height: 40px;
     align-self: center;
     justify-self: center;
-    margin-top: 90px;
   }
 
   #txt-color {
     grid-area: control-box;
-    place-self: center;
-    margin-top: 90px;
+    justify-self: center;
+    align-self: center;
     margin-inline-start: 90px;
   }
 
   .icon {
     width: 100%;
+  }
+
+  .add-line {
+    grid-area: control-box;
+    width: 30px;
+    height: 30px;
+    justify-self: center;
+    align-self: center;
+    margin-inline-start: 190px;
+    
+  }
+  
+  .switch-line {
+    grid-area: control-box;
+    justify-self: center;
+    align-self: center;
+    margin-inline-start: 270px;
+    width: 30px;
+    height: 30px;
   }
 

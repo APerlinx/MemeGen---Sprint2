@@ -16,8 +16,17 @@ var gMeme = {
             defaultTxt:'Make this MemeGen great',
             txt: 'Make this MemeGen great',
             size: 30,
-            color: 'blue'
+            color: 'White',
+            location: { locationX: 0, locationY: 0 }
+        },
+        {
+            defaultTxt:'Hello',
+            txt: 'Hello',
+            size: 20,
+            color: 'yellow',
+            location: { locationX: 0, locationY: 0 }
         }
+
     ],
     get img() {
         const selectedImg = gImgs.find(img => img.id === this.selectedImgId);
@@ -25,6 +34,32 @@ var gMeme = {
     }
 }
 // var gKeywordSearchCountMap = {'funny': 12,'cat': 16, 'baby': 2}
+
+function switchLineClick(lineClicked) {
+   
+   var lineIdx = gMeme.lines.findIndex(line => line.txt === lineClicked.txt)
+    gMeme.selectedLineIdx = lineIdx
+}
+
+function SwitchLine() {
+     gMeme.selectedLineIdx++
+    if(gMeme.selectedLineIdx > gMeme.lines.length-1) {
+        gMeme.selectedLineIdx = 0  
+        return
+    }
+}
+
+function addLine() {
+    gMeme.lines.push(
+        {
+            defaultTxt:'New line',
+            txt: 'New line',
+            size: 40,
+            color: 'White',
+            location: { locationX: 0, locationY: 0 }
+        }
+    )
+}
 
 function changeTxtColor(color) {
     gMeme.lines[0].color = color
