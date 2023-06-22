@@ -20,10 +20,10 @@ var gMeme = {
             location: { locationX: 0, locationY: 0 }
         },
         {
-            defaultTxt: 'Make this MemeGen great',
+            defaultTxt: 'Hello',
             txt: 'Hello',
             size: 20,
-            color: 'yellow',
+            color: 'black',
             location: { locationX: 0, locationY: 0 }
         }
 
@@ -47,23 +47,21 @@ function getSavedMemes() {
     return savedMemesJSON ? JSON.parse(savedMemesJSON) : [];
 }
 
-
-function getRndMeme() {
-
+function getRndLines() {
+   gMeme.lines[0].defaultTxt = gRndLines[getRandomIntInclusive(0, 5)]
+   gMeme.lines[0].txt = gRndLines[getRandomIntInclusive(0, 5)]
 }
 
 function switchLineClick(lineClicked) {
     var lineIdx = gMeme.lines.findIndex(line => line.txt === lineClicked.txt)
-    gMeme.selectedLineIdx = lineIdx
+    gMeme.selectedLineIdx = lineIdx 
 }
 
-function SwitchLine() {
-    gMeme.selectedLineIdx++
-    if (gMeme.selectedLineIdx > gMeme.lines.length - 1) {
-        gMeme.selectedLineIdx = 0
-        return
-    }
+function switchLine() {
+  gMeme.selectedLineIdx++
+  if (gMeme.selectedLineIdx >= gMeme.lines.length) gMeme.selectedLineIdx = 0;
 }
+
 
 function addLine() {
     gMeme.lines.push(
@@ -78,18 +76,16 @@ function addLine() {
 }
 
 function changeTxtColor(color) {
-    gMeme.lines[0].color = color
+  gMeme.lines[gMeme.selectedLineIdx].color = color
 }
 
 function changeTxtSize(size) {
     if (parseInt(size) > 40) return
-    gMeme.lines[0].size += parseInt(size)
-    console.log('var', gMeme.lines[0].size);
+    gMeme.lines[gMeme.selectedLineIdx].size += parseInt(size)
 }
 
 function setImg(imgIdx) {
     gMeme.selectedImgId = parseInt(imgIdx)
-    console.log('gMeme.slectedImgId', gMeme.selectedImgId);
 }
 
 function getMeme() {
@@ -107,18 +103,68 @@ function getImgs() {
     const memes = gImgs.filter((meme) => {
       return meme.keywords.includes(selectedKeyword);
     });
-    console.log('memes', memes);
     return memes;
   }
 
-
 function setLineTxt(text) {
-    if (!text) {
-        text = gMeme.lines[0].defaultTxt
-    }
+   if(gMeme.selectedLineIdx === 0) {
+    if(!text) text = gMeme.lines[0].defaultTxt
     gMeme.lines[0].txt = text
-
+   }  else if(gMeme.selectedLineIdx === 1) {
+    if(!text) text = gMeme.lines[1].defaultTxt
+      gMeme.lines[1].txt = text
+   }
 }
+
+function deleteLine() {
+    if (gMeme.lines.length === 1) {
+    
+      const line = gMeme.lines[0];
+      line.defaultTxt = 'New Line';
+      line.txt = 'New Line';
+      line.size = 30;
+      line.color = 'White';
+      line.location = { locationX: 0, locationY: 0 };
+
+
+    } else {
+      gMeme.lines.splice(gMeme.selectedLineIdx, 1);
+  
+      if (gMeme.selectedLineIdx >= gMeme.lines.length) {
+        gMeme.selectedLineIdx = gMeme.lines.length - 1;
+      }
+    }
+    
+    renderMeme();
+  }
+  
+  function resetEditor() {
+    gMeme.lines.forEach((line, index) => {
+      line.txt = line.defaultTxt;
+      line.color = 'black';
+      line.size = 30;
+      line.location = { locationX: 0, locationY: 0 };
+    });
+  
+    // Set the default values for the first line
+    if (gMeme.lines.length > 0) {
+      const line1 = gMeme.lines[0];
+      line1.defaultTxt = 'Hey';
+      line1.txt = 'Hey';
+      line1.size = 50;
+      line1.color = 'White';
+    }
+  
+    // Set the default values for the second line
+    if (gMeme.lines.length > 1) {
+      const line2 = gMeme.lines[1];
+      line2.defaultTxt = 'Hello';
+      line2.txt = 'Hello';
+      line2.size = 30;
+      line2.color = 'black';
+    }
+  }
+  
 
 function _createImgObj() {
     let images = []

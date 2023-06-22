@@ -17,14 +17,13 @@
 
   <header class="main-header-container">
     <div class="main-header main-layout flex space-between align-center">
-      <div class="main-logo">MemeGen</div>
+      <div class="main-logo" onclick="onDisplayGallery()">MemeGen</div>
       <ul class="main-nav flex clean-list align-center">
-        <li><button class="nav-link nav-bar-btn" onclick="onImflexible()">I'm flexible</button></li>
-        <li><a href="#" class="nav-link">Gallery</a></li>
+        <li><a href="#" class="nav-link" onclick="onDisplayGallery()">Gallery</a></li>
         <li><a href="#" class="nav-link" onclick="onDisplaySavedMemes()">Memes</a></li>
         <li><a href="#" class="nav-link">About</a></li>
         <li class="dropdown">
-          <a href="#" class="dropbtn nav-link active">Lang</a>
+          <a href="#" class="dropbtn nav-link">Lang</a>
           <ul class="dropdown-content clean-list">
             <li><a href="#">English</a></li>
             <li><a href="#">Hebrew</a></li>
@@ -37,7 +36,9 @@
   </header>
 
   <main class="main-content">
-    <input list="keywords" onchange="renderGallery()">
+    <button class="nav-link nav-bar-btn" onclick="onImflexible()">I'm flexible</button>
+    <label for="data-input" class="label-filter">Filter</label>
+    <input list="keywords" onchange="renderGallery()" class="data-input">
       <datalist id="keywords">
         <option value="funny">
         <option value="animal">
@@ -66,32 +67,32 @@
           <button class="add-line" onclick="onAddLine()"><img src="img/Icons/add.png" class="icon"></button>
           <button class="switch-line" onclick="onSwitchLine(event)"><img src="img/Icons/up-and-down.png"
               class="icon"></button>
-          <button><img src="img/Icons/trash.png" class="icon"></button>
+          <button onclick="onDeleteLine()"><img src="img/Icons/trash.png" class="icon"></button>
         </div>
         <div class="control-box2">
           <button class="decrease-txt-size" value="-10" onclick="onChangeTxtSize(this.value)"><img
               src="img/Icons/decrease font - icon.png" class="icon"></button>
           <button class="increase-txt-size" value="10" onclick="onChangeTxtSize(this.value)"><img
               src="img/Icons/increase font - icon.png" class="icon"></button>
-          <button><img src="img/Icons/align-to-left.png" class="icon"></button>
-          <button><img src="img/Icons/center-text-alignment.png" class="icon"></button>
-          <button><img src="img/Icons/align-to-right.png" class="icon"></button>
+          <button onclick="alignText('left')" disabled><img src="img/Icons/align-to-left.png" class="icon"></button>
+          <button onclick="alignText('center')" disabled><img src="img/Icons/center-text-alignment.png" class="icon"></button>
+          <button onclick="alignText('right')" disabled><img src="img/Icons/align-to-right.png" class="icon"></button>
         </div>
         <div class="control-box3">
-          <button><img src="img/Icons/text stroke.png" class="icon"></button>
+          <!-- <button><img src="img/Icons/text stroke.png" class="icon"></button> -->
           <div>
             <label for="T">T</label>
             <input type="color" id="txt-color" onchange="onChangeTxtColor(this.value)" title="Text-Color">
           </div>
           <div>
             <label for="S">S</label>
-            <input type="color" id="stroke-color" onchange="onChangeTxtColor(this.value)" title="Stroke-Color">
+            <input type="color" id="stroke-color" onchange="onChangeStrokeColor(this.value)" title="Stroke-Color">
           </div>
         </div>
         <div class="share-download">
           <a href="#" onclick="downloadMeme(this)" download="file-name" class="download-link">Download</a>
-          <button onclick="onSaveMeme()">Save</button>
-          <a href="#" onclick="downloadMeme(this)" download="file-name" class="share-link">Share</a>
+          <button onclick="onSaveMeme()" class="save-link">Save</button>
+          <a href="#" onclick="onUploadImg()" class="share-link">Share</a>
         </div>
 
         <div class="emoji">
@@ -105,37 +106,35 @@
     </div>
   </dialog>
 
-  <footer>I am a footer</footer>
+  <footer class="main-footer flex flex-column">
+    <div class="main-logo">MemeGen<span>.</span></div>
+    <p>
+      © Alon Perlin - 2014 MemeGen.com - All Rights Reserved
+    </p>
+
+    <ul class="footer-social flex align-center justify-center clean-list">
+      <li class="fb-link">
+        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+      </li>
+      <li class="twitter-link">
+        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+      </li>
+      <li class="be-link">
+        <a href="#"><i class="fa-brands fa-behance"></i></a>
+      </li>
+      <li class="drib-link">
+        <a href="#"><i class="fa-brands fa-dribbble"></i></a>
+      </li>
+    </ul>
+  </footer>
+
   <script src="js/service/util/meme-util.js"></script>
   <script src="js/service/memeService.js"></script>
+  <script src="js/service/line-service.js"></script>
   <script src="js/galleryController.js"></script>
   <script src="js/memeController.js"></script>
   <script src="js/main.js"></script>
 
-  <script>
-    // dialog
-    const elDialog = document.querySelector('.dialog')
-    elDialog.addEventListener('click', ev => {
-      const dialogDimensions = elDialog.getBoundingClientRect()
-      if (
-        ev.clientX < dialogDimensions.left ||
-        ev.clientX > dialogDimensions.right ||
-        ev.clientY < dialogDimensions.top ||
-        ev.clientY > dialogDimensions.bottom
-      ) {
-        elDialog.close()
-      }
-    })
-
-    function openDialog() {
-      document.querySelector('.dialog').showModal()
-    }
-
-    function closeDialog() {
-      document.querySelector('.dialog').close()
-    }
-
-  </script>
 </body>
 
 </html>

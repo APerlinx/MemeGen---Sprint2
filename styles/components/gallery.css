@@ -1,13 +1,13 @@
 .image-btn {
-    border: none; /* Remove the border */
-    background: none; /* Remove the background */
-    padding: 0; /* Remove padding */
+    border: none; 
+    background: none; 
+    padding: 0; 
     cursor: pointer;
   }
   
   .image-btn img {
-    display: block; /* Ensure the image is displayed as a block element */
-    width: 100%; /* Adjust the width as needed */
+    display: block; 
+    width: 100%; 
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s, border 0.3s; 

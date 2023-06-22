@@ -1,0 +1,14 @@
+.close-menu {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.178);
+    cursor: pointer;
+    pointer-events: none;
+    transition: opacity 0.6s;
+    opacity: 0;
+}
+
+body.menu-open .close-menu {
+    opacity: 1;
+    pointer-events: auto;
+}

@@ -17,7 +17,6 @@ function renderSavedMemes() {
 
   savedMemes.forEach((meme, index) => {
     const imgUrl = meme.img; // Assuming the URL of the saved meme is stored in `meme.img`
-    console.log('imgUrl', imgUrl);
     if (imgUrl) {
       strHTML += `<button onclick="openDialog(); onSavedMemeSelect(${index});" class="image-btn"><img src="${imgUrl}"></button>`;
     }
@@ -28,4 +27,8 @@ function renderSavedMemes() {
 
 function _rndKeyWords() {
   let keyWordsArr = [funny,cute]
+}
+
+function toggleMenu() {
+  document.body.classList.toggle('menu-open');
 }

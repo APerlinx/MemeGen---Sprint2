@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  background-color: #9387ab;
+  background-color: var(--Primary-color);
   font: 400 10px;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   text-align: center;

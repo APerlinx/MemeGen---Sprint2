@@ -1,7 +1,9 @@
 .main-footer {
   background-color: var(--ftr-color);
+  border-radius: 10px;
   text-align: center;
   padding: 3.75em 2.2em 5em;
+   opacity: 0.7;
 }
 
 .main-footer .main-logo {
@@ -11,13 +13,13 @@
 
 .main-footer p {
   font-size: 0.8125em;
-  color: var(--clr4);
+  color: var(--clr2);
   margin-bottom: 35px;
 }
 
 .main-footer .footer-social li {
   display: inline-block;
-
+  transition: 0.3s;
   background-color: var(--scl-color);
   cursor: pointer;
 }

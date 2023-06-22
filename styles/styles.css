@@ -1,6 +1,5 @@
 /* SETUP  */
 @import 'setup/vars.css';
-@import 'setup/typography.css';
 
 /* BASE */
 @import 'basic/base.css';
@@ -14,6 +13,6 @@
 @import 'components/gallery.css';
 @import 'components/editor.css';
 @import 'components/main-content.css';
-
+@import 'components/data-list.css';
 /* Media Queries */
 @import 'mq/mq.css';

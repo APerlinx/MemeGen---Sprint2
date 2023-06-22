@@ -1,0 +1,63 @@
+.data-input {
+    width: 200px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-bottom: 2em;
+  }
+  
+  .data-input::-webkit-calendar-picker-indicator {
+    color: #888;
+    font-size: 12px;
+    padding: 2px;
+    cursor: pointer;
+  }
+  
+  #keywords {
+    font-size: 14px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 4px;
+    max-height: 150px;
+    overflow-y: auto;
+  }
+
+  #keywords option {
+    padding: 4px;
+    cursor: pointer;
+  }
+  
+  #keywords option:hover {
+    background-color: #f5f5f5;
+  }
+
+  .label-filter {
+    color: #f5f5f5;
+    font-size: 2em; 
+    margin-inline-end: 0.3em;
+  }
+
+  .label-filter:hover {
+    color: lightcoral;
+    transition: 0.3s;
+  }
+
+  .nav-bar-btn {
+    border: none; 
+    background: none; 
+    padding: 0; 
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .nav-bar-btn:hover {
+    border: 0;
+    background-color: white;
+    border-radius: 10px;
+    padding: 8px ;
+    cursor: pointer;
+  }
+  
+  

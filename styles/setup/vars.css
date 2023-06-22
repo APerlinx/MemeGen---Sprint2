@@ -7,13 +7,13 @@
   --clr5: #818181;
 
   /* Page colors */
-  --hover-clr: #58c93a;
-  --header-bgc: #292929;
+  --hover-clr: #17141d;
+  --header-bgc: #17141d;
   --border-color: #e1e0e0;
   --fb-color: #516fad;
-  --scl-color: #e5e5e5;
-  --ftr-color: #f8f8f8;
-
+  --scl-color: #8b8484;
+  --ftr-color: #818181;
+  --Primary-color: #9387ab;
   /* spacing */
   --margin-btm: 70px;
   --margin-btm-medium: 35px;
