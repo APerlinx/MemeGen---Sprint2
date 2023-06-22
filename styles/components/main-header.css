@@ -31,7 +31,6 @@
 }
 
 .main-header .main-nav .nav-link {
-  color: inherit;
   display: flex;
   color: #fff;
   width: 130px;
@@ -39,17 +38,33 @@
   align-items: center;
   text-decoration: none;
   font-family: Lato-bold, sans-serif;
- 
   justify-content: end;
+  transition: 0.3s;
 }
 
 .main-header .main-nav .nav-link:hover,
-.main-nav .nav-link.active {
-  color: lightcoral
+.main-nav {
+  color: lightcoral;
+
 }
 
 .main-header button {
   display: none;
+}
+
+.nav-bar-btn {
+  border: 0;
+  background-color: #17141d;
+  cursor: pointer;
+  
+}
+
+.nav-bar-btn:hover {
+  border: 0;
+  background-color: white;
+  border-radius: 10px;
+  padding: 8px ;
+  cursor: pointer;
 }
 
 /* Dropdown */

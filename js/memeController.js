@@ -27,10 +27,38 @@ function renderMeme() {
     };
 }
 
+function onDisplaySavedMemes() {
+    const gallerySection = document.querySelector('.gallery');
+    gallerySection.style.display = 'none';
+
+    renderSavedMemes()
+    const savedMemesSection = document.querySelector('.saved-memes');
+    savedMemesSection.style.display = 'block';
+
+}
+
+function onSaveMeme() {
+    const canvas = document.getElementById('my-canvas');
+    const canvasData = canvas.toDataURL();
+    saveMeme(canvasData);
+}
+
+function onImflexible() {
+    // TODO: This function is buggy need to fix
+    getRndMeme()
+    onImgSelect(4)
+    renderMeme()
+    openDialog()
+
+}
 function onImgSelect(imgIdx) {
     setImg(imgIdx)
     setLineTxt('')
     renderMeme()
+}
+
+function onSavedMemeSelect(index) {
+ //TODO: When iamge on meme page, the right image and editor should be opend
 }
 
 function onSwitchLine() {
@@ -54,12 +82,12 @@ function drawText(text, x, y, color, size, selectedLineIdx, lineIdx, selectedLin
     gCtx.textAlign = 'center';
     gCtx.textBaseline = 'top';
     gCtx.fillText(text, x, y);
-    drawRect(x, y, size, text, selectedLine,lineIdx,selectedLineIdx);
+    drawRect(x, y, size, text, selectedLine, lineIdx, selectedLineIdx);
     onDefaultLines(selectedLine.txt);
 }
 
 
-function drawRect(x, y, size, text, selectedLine,lineIdx,selectedLineIdx) {
+function drawRect(x, y, size, text, selectedLine, lineIdx, selectedLineIdx) {
 
     const textWidth = gCtx.measureText(text).width
     const boxPadding = 10
@@ -72,13 +100,13 @@ function drawRect(x, y, size, text, selectedLine,lineIdx,selectedLineIdx) {
     const locationX = boxX
     const locationY = boxY
     selectedLine.location = { locationX, locationY };
-     if (selectedLineIdx !== lineIdx ) return;
+    if (selectedLineIdx !== lineIdx) return;
     gCtx.beginPath();
     gCtx.rect(boxX, boxY, boxWidth, boxHeight);
     gCtx.strokeStyle = 'white'
     gCtx.stroke();
 
-    
+
 }
 
 
@@ -118,12 +146,12 @@ function getEvPos(ev) {
 function onDown(ev) {
     const pos = getEvPos(ev);
     const meme = getMeme();
-    
+
     const line = meme.lines.find(line => {
         const { locationX, locationY } = line.location;
         const boxWidth = gCtx.measureText(line.txt).width + 20;
         const boxHeight = line.size + 20;
-        
+
         return (
             pos.x >= locationX &&
             pos.x <= locationX + boxWidth &&
@@ -132,7 +160,7 @@ function onDown(ev) {
         );
     });
 
-   onSwitchLineClick(line)
+    onSwitchLineClick(line)
 }
 
 

@@ -18,3 +18,15 @@
     transform: scale(1.1);
     border: 2px solid black;
   }
+
+  .saved-memes  {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+  }
+
+  .saved-memes img {
+    max-width: 200px;
+    max-height: 400px;
+    margin-inline: 1em;
+  }
