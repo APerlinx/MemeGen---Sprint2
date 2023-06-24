@@ -15,6 +15,9 @@
 .flex.space-between {
   justify-content: space-between;
 }
+.flex.space-evenly {
+  justify-content: space-evenly;
+}
 
 .flex.flex-column {
   flex-direction: column;

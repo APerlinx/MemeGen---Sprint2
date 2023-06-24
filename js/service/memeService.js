@@ -2,11 +2,11 @@
 
 const STORAGE_KEY = 'memeDB'
 const gKeyWord = ['funny','bad','animal','happy','sad','baby','cat']
-var gImgs = []
 const gKeywordSearchCountMap = {}
-let gRndLines = ['Yoo', 'Look at you', 'are you ok?', 'Happy weekend', 'This is what\'s up', ' Wasssssuuuppp']
+let gImgs = []
+let gRndLines = ['Yoo', 'Look at you', 'WTF', 'Happy weekend', 'This is what\'s up', ' Wasssssuuuppp']
 _createImgObj()
-var gMeme = {
+let gMeme = {
     selectedImgId: 2,
     selectedLineIdx: 0,
     lines: [
@@ -20,9 +20,9 @@ var gMeme = {
             rotationAngle: 0
         },
         {
-            defaultTxt: '',
-            txt: '',
-            size: 20,
+            defaultTxt: 'Hello',
+            txt: 'Hello',
+            size: 30,
             color: 'black',
             location: { locationX: 0, locationY: 0 },
             rotationAngle: 0
@@ -34,7 +34,6 @@ var gMeme = {
         return selectedImg ? selectedImg.url : null;
     }
 }
-
 
 function createKeyWordMap() {
   const gKeywordSearchCountMap = gImgs.reduce((countMap, imgObj) => {
@@ -80,7 +79,6 @@ function switchLine() {
   gMeme.selectedLineIdx++
   if (gMeme.selectedLineIdx >= gMeme.lines.length) gMeme.selectedLineIdx = 0;
 }
-
 
 function addLine() {
     gMeme.lines.push(
@@ -161,7 +159,7 @@ function deleteLine() {
     renderMeme();
   }
   
-  function resetEditor() {
+function resetEditor() {
     gMeme.lines.forEach((line, index) => {
       line.txt = line.defaultTxt;
       line.color = 'black';
@@ -172,8 +170,8 @@ function deleteLine() {
     // Set the default values for the first line
     if (gMeme.lines.length > 0) {
       const line1 = gMeme.lines[0];
-      line1.defaultTxt = 'Hey';
-      line1.txt = 'Hey';
+      line1.defaultTxt = 'Meme';
+      line1.txt = 'Meme';
       line1.size = 50;
       line1.color = 'White';
     }
@@ -181,8 +179,8 @@ function deleteLine() {
     // Set the default values for the second line
     if (gMeme.lines.length > 1) {
       const line2 = gMeme.lines[1];
-      line2.defaultTxt = '';
-      line2.txt = '';
+      line2.defaultTxt = 'Gen';
+      line2.txt = 'Gen';
       line2.size = 30;
       line2.color = 'black';
     }

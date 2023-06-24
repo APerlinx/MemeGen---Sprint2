@@ -23,20 +23,17 @@
   .editor-txt-container {
     grid-area: text-line;
     place-self: center;
-    background-color: lightslategray;
     border-radius: 10px;
     display: inline-block;
     padding: 8px 12px;
-    background-color: #336699;
     border-radius: 20px;
     color: #fff;
     opacity: 0.8;
   }
 
   .editor-txt-container input {
-    background-color: lightslategray;
     border-radius: 10px;
-    color: aliceblue;
+    color: black;
     width: 300px;
     height: 40px;
     box-shadow: 1px 0px 0px #1976D2,0px 1px 0px #1976D2, 2px 1px 0px #1976D2,1px 2px 0px #1976D2;
@@ -53,8 +50,8 @@
   }
 
   .share-download a {
-    color: #1976D2; /* Set the desired color for the link */
-    text-decoration: none; /* Remove underline and other text decorations */
+    color: #1976D2;
+    text-decoration: none;
     display: inline-block;
     padding: 8px 12px;
     
