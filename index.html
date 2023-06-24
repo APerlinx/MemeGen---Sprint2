@@ -23,7 +23,7 @@
         <li><a href="#" class="nav-link" onclick="onDisplaySavedMemes()">Memes</a></li>
         <li><a href="#" class="nav-link">About</a></li>
         <li class="dropdown">
-          <a href="#" class="dropbtn nav-link">Lang</a>
+          <a href="#" class="dropbtn nav-link">Language</a>
           <ul class="dropdown-content clean-list">
             <li><a href="#">English</a></li>
             <li><a href="#">Hebrew</a></li>
@@ -36,17 +36,21 @@
   </header>
 
   <main class="main-content">
+    <!-- <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" accept="image/*" /> -->
+    <section class="searchBy">
+
+      <button class="keyword kWrd3" onclick="onKeyWordSearch('')">all</button>
+    </section>
     <button class="nav-link nav-bar-btn" onclick="onImflexible()">I'm flexible</button>
-    <label for="data-input" class="label-filter">Filter</label>
-    <input list="keywords" onchange="renderGallery()" class="data-input">
-      <datalist id="keywords">
-        <option value="funny">
-        <option value="animal">
-        <option value="bad">
-        <option value="akward">
-        <option value="Happy">
-        <option value="Sad">
-      </datalist>
+    <input list="keywords" onchange="renderGallery()" class="data-input" placeholder="Search By Keyword">
+    <datalist id="keywords">
+      <option value="funny">
+      <option value="animal">
+      <option value="bad">
+      <option value="akward">
+      <option value="Happy">
+      <option value="Sad">
+    </datalist>
     <section class="gallery"></section>
     <section class="saved-memes" hidden></section>
   </main>
@@ -56,6 +60,10 @@
     <div class="editor-dialog">
       <div class="canvas-container">
         <canvas id="my-canvas" height="400" width="400"></canvas>
+        <div class="line-buttons">
+          <!-- <div class="resize-button" onclick="activateResizeMode()"><i class="fas fa-expand"></i></div> -->
+          <div class="rotate-button" onmousedown="onRotate()" onmouseup="onEndRotate()"><i class="fas fa-undo-alt"></i></div>
+        </div>
       </div>
       <section class="editor">
         <div class="editor-txt-container">
@@ -75,7 +83,8 @@
           <button class="increase-txt-size" value="10" onclick="onChangeTxtSize(this.value)"><img
               src="img/Icons/increase font - icon.png" class="icon"></button>
           <button onclick="alignText('left')" disabled><img src="img/Icons/align-to-left.png" class="icon"></button>
-          <button onclick="alignText('center')" disabled><img src="img/Icons/center-text-alignment.png" class="icon"></button>
+          <button onclick="alignText('center')" disabled><img src="img/Icons/center-text-alignment.png"
+              class="icon"></button>
           <button onclick="alignText('right')" disabled><img src="img/Icons/align-to-right.png" class="icon"></button>
         </div>
         <div class="control-box3">
@@ -109,23 +118,8 @@
   <footer class="main-footer flex flex-column">
     <div class="main-logo">MemeGen<span>.</span></div>
     <p>
-      © Alon Perlin - 2014 MemeGen.com - All Rights Reserved
+      © Alon Perlin - <img src="img/Icons/github-logo.png" class="github-icon"> - All Rights Reserved
     </p>
-
-    <ul class="footer-social flex align-center justify-center clean-list">
-      <li class="fb-link">
-        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-      </li>
-      <li class="twitter-link">
-        <a href="#"><i class="fa-brands fa-twitter"></i></a>
-      </li>
-      <li class="be-link">
-        <a href="#"><i class="fa-brands fa-behance"></i></a>
-      </li>
-      <li class="drib-link">
-        <a href="#"><i class="fa-brands fa-dribbble"></i></a>
-      </li>
-    </ul>
   </footer>
 
   <script src="js/service/util/meme-util.js"></script>

@@ -1,0 +1,32 @@
+.canvas-container {
+    position: relative;
+  }
+  
+  .line-buttons {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+  }
+  
+  .resize-button,
+  .rotate-button {
+    display: inline-block;
+    padding: 8px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .resize-button i,
+  .rotate-button i {
+    color: #333;
+  }
+  
+  .resize-button:hover,
+  .rotate-button:hover {
+    background-color: #f0f0f0;
+  }
+  

@@ -14,5 +14,6 @@
 @import 'components/editor.css';
 @import 'components/main-content.css';
 @import 'components/data-list.css';
+@import 'components/line.css';
 /* Media Queries */
 @import 'mq/mq.css';

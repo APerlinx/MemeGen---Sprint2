@@ -1,12 +1,11 @@
 'use strict'
+
 const STORAGE_KEY = 'memeDB'
-
-var gImgs = []
 const gKeyWord = ['funny','bad','animal','happy','sad','baby','cat']
-_createImgObj()
-
+var gImgs = []
+const gKeywordSearchCountMap = {}
 let gRndLines = ['Yoo', 'Look at you', 'are you ok?', 'Happy weekend', 'This is what\'s up', ' Wasssssuuuppp']
-
+_createImgObj()
 var gMeme = {
     selectedImgId: 2,
     selectedLineIdx: 0,
@@ -17,14 +16,16 @@ var gMeme = {
             txt: 'Make this MemeGen great',
             size: 30,
             color: 'White',
-            location: { locationX: 0, locationY: 0 }
+            location: { locationX: 0, locationY: 0 },
+            rotationAngle: 0
         },
         {
-            defaultTxt: 'Hello',
-            txt: 'Hello',
+            defaultTxt: '',
+            txt: '',
             size: 20,
             color: 'black',
-            location: { locationX: 0, locationY: 0 }
+            location: { locationX: 0, locationY: 0 },
+            rotationAngle: 0
         }
 
     ],
@@ -33,7 +34,20 @@ var gMeme = {
         return selectedImg ? selectedImg.url : null;
     }
 }
-// var gKeywordSearchCountMap = {'funny': 12,'cat': 16, 'baby': 2}
+
+
+function createKeyWordMap() {
+  const gKeywordSearchCountMap = gImgs.reduce((countMap, imgObj) => {
+    const keywords = imgObj.keywords;
+
+    keywords.forEach(keyword => {
+      countMap[keyword] = (countMap[keyword] || 0) + 1;
+    });
+
+    return countMap;
+  }, {});
+  return gKeywordSearchCountMap;
+}
 
 function saveMeme(canvasData) {
     const savedMemes = getSavedMemes();
@@ -52,9 +66,14 @@ function getRndLines() {
    gMeme.lines[0].txt = gRndLines[getRandomIntInclusive(0, 5)]
 }
 
+function getPrevLineAngle() {
+if(gMeme.selectedLineIdx === 0) return gMeme.lines[1].rotationAngle
+if(gMeme.selectedLineIdx === 1) return gMeme.lines[0].rotationAngle
+}
+
 function switchLineClick(lineClicked) {
-    var lineIdx = gMeme.lines.findIndex(line => line.txt === lineClicked.txt)
-    gMeme.selectedLineIdx = lineIdx 
+  gMeme.selectedLineIdx = gMeme.lines.findIndex(line => line.txt === lineClicked.txt);
+  getPrevLineAngle(gMeme.selectedLineIdx)
 }
 
 function switchLine() {
@@ -90,6 +109,10 @@ function setImg(imgIdx) {
 
 function getMeme() {
     return gMeme
+}
+
+function addImg(img) { // User image upload
+  gImgs.unshift({ id: gImgs.length+1, url: `${img}`, keywords: [gKeyWord[getRandomIntInclusive(0, 6)], gKeyWord[getRandomIntInclusive(0, 6)]] })
 }
 
 function getImgs() {
@@ -143,7 +166,7 @@ function deleteLine() {
       line.txt = line.defaultTxt;
       line.color = 'black';
       line.size = 30;
-      line.location = { locationX: 0, locationY: 0 };
+      // line.location = { locationX: 0, locationY: 0 };
     });
   
     // Set the default values for the first line
@@ -158,14 +181,13 @@ function deleteLine() {
     // Set the default values for the second line
     if (gMeme.lines.length > 1) {
       const line2 = gMeme.lines[1];
-      line2.defaultTxt = 'Hello';
-      line2.txt = 'Hello';
+      line2.defaultTxt = '';
+      line2.txt = '';
       line2.size = 30;
       line2.color = 'black';
     }
   }
   
-
 function _createImgObj() {
     let images = []
     for (let i = 1; i <= 18; i++) {

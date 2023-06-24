@@ -10,13 +10,14 @@
     width: 100%; 
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s, border 0.3s; 
-    
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transition: transform 0.3s ease, border 0.3s; 
+    /* border: 5px solid white; */
   }
 
   .image-btn img:hover {
     transform: scale(1.1);
-    border: 2px solid black;
+    border: 2px solid chocolate;
   }
 
   .saved-memes  {
@@ -30,3 +31,26 @@
     max-height: 400px;
     margin-inline: 1em;
   }
+  
+ .searchBy {
+  background-color: chocolate;
+  width: max-content;
+  padding: 8px 12px;
+  border-radius: 10px;
+ }
+
+ .keyword {
+  background: none;
+  border: none;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  
+ }
+
+ .keyword:hover {
+  transform: translateY(-5px);
+  transition: 0.3s ease-in-out;
+ }
+  
+  

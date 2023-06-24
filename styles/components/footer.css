@@ -2,8 +2,8 @@
   background-color: var(--ftr-color);
   border-radius: 10px;
   text-align: center;
-  padding: 3.75em 2.2em 5em;
-   opacity: 0.7;
+  padding: 1em;
+   opacity: 0.5;
 }
 
 .main-footer .main-logo {
@@ -13,43 +13,18 @@
 
 .main-footer p {
   font-size: 0.8125em;
-  color: var(--clr2);
-  margin-bottom: 35px;
+  color: var(--clr3);
+ 
 }
 
-.main-footer .footer-social li {
-  display: inline-block;
-  transition: 0.3s;
-  background-color: var(--scl-color);
+.github-icon{
+  width: 2em;
+  height: 2em;
   cursor: pointer;
+  border-radius: 50%;
+  transition: 0.3s;
 }
 
-.footer-social li.fb-link:hover {
-  background-color: #516fad;
-}
-
-.footer-social li.twitter-link:hover {
-  background-color: #00acee;
-}
-
-.footer-social li.be-link:hover {
-  background-color: #000;
-}
-
-.footer-social li.drib-link:hover {
-  background-color: #ea4c89;
-}
-
-.footer-social a {
-  width: 2.5em;
-  height: 2.5em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  color: #fff;
-}
-
-.footer-social > *:not(:first-child) {
-  margin-inline-start: 2.2em;
+.github-icon:hover{
+scale: 1.2;
 }

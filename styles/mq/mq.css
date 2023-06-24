@@ -202,16 +202,12 @@
     display: flex;
     justify-content: end;
     align-items: center;
-
     width: 60px;
     height: 60px;
-
     border: none;
-
     font-size: 2rem;
     color: #fff;
     background-color: transparent;
-
     cursor: pointer;
   }
 
@@ -241,20 +237,6 @@
 
 
 }
-
-/* @media (max-width: 439px) {
-
-  .gallery {
-      margin-top: 800px;
-     
-  }
-
-  img {
-    max-width: 300px;
-    max-height: 300px;
-  }
-} */
-
 
 /* MEDIUM */
 @media (min-width: 800px) {
@@ -358,7 +340,7 @@
   }
 
   footer {
-    grid-column: 2;
+    grid-column: span 3;
     grid-row: 3;
   }
 
