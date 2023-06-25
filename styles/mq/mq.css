@@ -355,6 +355,8 @@
   translate: -99% -2%;
 }
 
+
+
 }
 
 /* LARGE */
@@ -397,7 +399,6 @@
   footer {
     grid-column: span 3;
     grid-row: 3;
-    height: auto;
   }
 
   .main-header .main-nav {

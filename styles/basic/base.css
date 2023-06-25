@@ -14,7 +14,6 @@ body {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   text-align: center;
   margin: 0;
- 
 }
 
 h1,
@@ -40,10 +39,6 @@ p {
 
 img {
   border-radius: 10px;
-}
-
-footer { 
-  flex-shrink: 0;
 }
 
 
