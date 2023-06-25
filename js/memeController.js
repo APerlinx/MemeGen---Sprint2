@@ -16,6 +16,7 @@ function onInit() {
     addListeners()
     renderGallery()
     renderKeyWordSeach()
+    renderEmojisSection()
 }
 
 function renderMeme() {
@@ -330,6 +331,27 @@ function handleCanvasClick(event) { // TODO: GET GMEME FROM MEME SERVICE
         document.body.style.cursor = 'grab';
         updateLineButtonsPosition()
     }
+}
+
+function renderEmojisSection() {
+let emojiContainer = document.querySelector('.emojis-section')
+const emojis = ["😀", "🌞", "🌈", "🌻", "🐶", "🐱", "🍕", "🎉", "⚽", "🚀", "🌊", "🎨", "📷", "🎸", "🍔"];
+emojis.forEach((emoji) => {
+    const button = document.createElement("button");
+    button.textContent = emoji;
+    button.onclick = function () {
+      addEmojis(emoji);
+    };
+    emojiContainer.appendChild(button);
+  });
+}
+
+
+function addEmojis(emoji) {
+    var canvas = document.getElementById("my-canvas");
+    var ctx = canvas.getContext("2d");
+    ctx.font = "48px Arial";
+    ctx.fillText(`${emoji}`, getRandomIntInclusive(1,350), getRandomIntInclusive(200,350));
 }
 
 function addListeners() {

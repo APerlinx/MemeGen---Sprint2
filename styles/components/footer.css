@@ -3,11 +3,11 @@
   border-radius: 10px;
   text-align: center;
   padding: 1em;
-   opacity: 0.5;
+
 }
 
 .main-footer .main-logo {
-  color: var(--header-bgc);
+  color: black;
   margin-bottom: 25px;
 }
 

@@ -4,6 +4,7 @@
     background: none;
     cursor: pointer;
     transition: 0.3s;
+    font-size: 1em;
 }
 
 .prev-page-btn:hover,

@@ -12,15 +12,31 @@ canvas {
 }
 
 .editor-dialog {
-  background-color: rgb(218, 215, 215);
+  background-color: #D0F5BE;
 }
 
-.emoji {
+.emojis-section {
   grid-area: emoji;
-  background-color: #0165E1;
-  border: 2px solid black;
-  opacity: 0.4;
+  background-color: #7a6b5c;
+  opacity: 0.8;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
   border-radius: 10px;
+}
+
+.emojis-section button {
+  border-radius: 10px;
+  height: max-content;
+  border: none;
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+.emojis-section button:hover {
+background-color: lightslategray;
 }
 
 .editor-txt-container {
@@ -53,7 +69,6 @@ canvas {
 }
 
 .share-download a {
-  color: #1976D2;
   text-decoration: none;
   display: inline-block;
   padding: 8px 12px;
@@ -81,13 +96,13 @@ canvas {
 .save-link:hover {
   background-color: lightslategray;
   scale: 1.1;
-  transition: 0.3s;
+  transition: 0.1s;
 }
 
 .share-download a:hover {
   background-color: lightslategray;
-  transform: scale(1.1);
-  transition: 0.3s;
+  transform: scale(1.05);
+  transition: 0.1s;
 }
 
 .control-box1 {
@@ -107,15 +122,6 @@ canvas {
   align-items: center;
 }
 
-.control-box3 {
-  grid-area: control-box3;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  align-items: start;
-}
-
 .control-box1 button,
 .control-box2 button,
 .control-box3 button {
@@ -123,15 +129,15 @@ canvas {
   width: 50px;
   height: 50px;
   cursor: pointer;
-  border: none
+  border: none;
 }
 
 .control-box1 button:hover,
 .control-box2 button:hover,
 .control-box3 button:hover {
   background-color: lightslategray;
-  scale: 1.1;
-  transition: 0.3s;
+  scale: 1.05;
+  transition: 0.1s;
 }
 
 .icon {
@@ -153,12 +159,12 @@ canvas {
 }
 
 .data-input[type="text"]:focus {
-scale: 1.2;
+  scale: 1.2;
 }
 
 .modal-btn {
   position: absolute;
-  top:2%;
+  top: 2%;
   left: 99%;
   translate: -99% -2%;
   border-radius: 555px;
@@ -167,5 +173,5 @@ scale: 1.2;
 }
 
 .modal-btn:hover {
-background-color: lightslategray;
+  background-color: lightslategray;
 }

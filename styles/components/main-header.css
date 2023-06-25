@@ -17,7 +17,7 @@
 /* Logo */
 
 .main-header .main-logo {
-  color: #fff;
+  color: #FBFFDC;
   font-size: 2.5rem;
   cursor: pointer;
   transition: 0.3s;
@@ -25,7 +25,7 @@
 
 
 .main-header .main-logo:hover {
-  color: chocolate;
+  color: #D0F5BE;
   transform: scale(1.1);
 }
 
@@ -38,7 +38,7 @@
 
 .main-header .main-nav .nav-link {
   display: flex;
-  color: #fff;
+  color: #FBFFDC;
   width: 130px;
   justify-content: center;
   align-items: center;
@@ -50,7 +50,7 @@
 
 .main-header .main-nav .nav-link:hover,
 .main-nav {
-  color: chocolate;
+  color: #D0F5BE;
 
 }
 
@@ -63,8 +63,6 @@
 .dropdown {
   width: 100%;
 }
-
-
 
 .dropdown-content {
   position: absolute;

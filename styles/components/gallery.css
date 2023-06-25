@@ -16,7 +16,7 @@
 
   .image-btn img:hover {
     transform: scale(1.1);
-    border: 2px solid chocolate;
+    border: 2px solid #FBFFDC;
   }
 
   .saved-memes  {
@@ -32,7 +32,7 @@
   }
   
  .searchBy {
-  background-color: chocolate;
+  background-color: #D0F5BE;
   width: max-content;
   padding: 8px 12px;
   border-radius: 10px;
@@ -42,7 +42,7 @@
  .keyword {
   background: none;
   border: none;
-  color: white;
+  color: #A4907C;
   font-weight: 700;
   cursor: pointer;
  }

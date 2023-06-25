@@ -1,6 +1,6 @@
 :root {
   /* Text colors */
-  --clr1: #606060;
+  --clr1: #A4907C;
   --clr2: #4f4e4e;
   --clr3: #c2c1c1;
   --clr4: #a6a6a6;
@@ -8,12 +8,11 @@
 
   /* Page colors */
   --hover-clr: #17141d;
-  --header-bgc: #17141d;
+  --header-bgc: #A4907C;
   --border-color: #e1e0e0;
-  --fb-color: #516fad;
   --scl-color: #8b8484;
-  --ftr-color: #818181;
-  --Primary-color: #9387ab;
+  --ftr-color: #A4907C;
+  --Primary-color: #98EECC;
   /* spacing */
   --margin-btm: 70px;
   --margin-btm-medium: 35px;

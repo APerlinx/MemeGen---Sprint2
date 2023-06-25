@@ -16,7 +16,7 @@
     margin: 0 auto;
     width: 100%;
     max-width: 600px;
-    background-color: #817b8f;
+    background-color: #A4907C;
   }
 
   .dialog {
@@ -26,7 +26,8 @@
 
   .editor-dialog {
     display: grid;
-    grid-template-columns: 250px;
+    grid-template-columns: 310px;
+    height: 600px;
     column-gap: 5px;
     grid-template-areas:
       "canvas"
@@ -36,12 +37,13 @@
 
   .editor {
     grid-area: editor;
-    background-color: #c0bcbc;
+    background-color: #A4907C;
+    height: 300px;
     border-radius: 10px;
     display: grid;
-    max-width: 250px;
+    max-width: 300px;
     grid-template-rows: max-content;
-    grid-template-columns: 250px;
+    grid-template-columns: 300px;
     grid-template-areas:
       "text-line   "
       "control-box1"
@@ -80,7 +82,7 @@
   }
 
   .dialog {
-    background-color: #fff;
+    background-color: #98EECC;
     max-width: 300px;
     border-radius: 9px;
     box-shadow: 0px 5px 13px 5px rgba(0, 0, 0, 0.39);
@@ -106,7 +108,6 @@
     border-radius: 10px;
     width: 200px;
     height: 40px;
-    box-shadow: 1px 0px 0px #1976D2, 0px 1px 0px #1976D2, 2px 1px 0px #1976D2, 1px 2px 0px #1976D2;
     font-size: 1.5em;
   }
 
@@ -118,8 +119,8 @@
 
   #txt-color,
   #stroke-color {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
 
   }
 
@@ -144,7 +145,7 @@
     flex-direction: column;
     margin-top: 80px;
     z-index: 100;
-    background-color: rgba(96, 79, 107, 0.9);
+    background-color: #A4907C;
     border-inline-start: 1px solid #ccc;
     height: 100vh;
     width: 230px;
@@ -153,7 +154,7 @@
   }
 
   body.menu-open .main-nav {
-    box-shadow: -6px 0px 17px rgba(86, 48, 110, 0.35);
+    box-shadow: -6px 0px 17px #A4907C;
     justify-content: start;
     transform: translateX(0);
     translate: 0;
@@ -220,7 +221,7 @@
     padding: 0;
   }
 
-  .menu {
+  .app-menu {
     grid-column: 2;
     display: flex;
     flex-direction: row;
@@ -270,7 +271,7 @@
     padding-top: var(--margin-btm);
     width: 100%;
     max-width: 720px;
-    background-color: #817b8f;
+    background-color: #c5b19f;
   }
 
   .gallery {
@@ -283,27 +284,41 @@
 
   .editor {
     grid-area: editor;
-    background-color: #c0bcbc;
+    background-color: #A4907C;
     border-radius: 10px;
     display: grid;
-    grid-template-rows: 60px 50px 50px 60px 1fr 1fr;
+    grid-template-rows: repeat(3,1fr) 2fr 1fr;
     grid-template-areas:
       "text-line   "
       "control-box1"
       "control-box2"
-      "control-box3"
-      "emoji       "
+      "emoji"
       "share-download";
-    border: 2px solid black;
-  }
-
-  canvas {
-    border: 2px solid black;
   }
 
   .main-header-container {
     width: 720px;
     place-self: center;
+  }
+
+  .control-box1 {
+    grid-area: control-box1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  
+  .control-box2 {
+    grid-area: control-box2;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  
+  .control-box3 {
+    justify-content: space-evenly;
   }
 
   .editor-dialog {
@@ -315,17 +330,30 @@
     padding: 20px;
   }
 
-  .menu {
+  .app-menu{
     grid-column: 2;
-    display: flex;
-    flex-direction: row;
-    flex: 1;
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    translate: -50% -10%;
+    display: grid;
+    grid-auto-flow: column;
+    margin-bottom: 1em;
   }
 
+  .searchBy {
+    grid-column: 3;
+   justify-self: center;
+  }
+
+  .pagination {
+    grid-column: 5;
+    justify-self: center;
+    align-self: center;
+  }
+
+  .tooltip,.fa-info-circle,.info-icon{
+    grid-column: 2;
+    justify-self: flex-end;
+    align-self: center;
+  }
+ 
   .dropdown {
     margin-inline-end: 2em;
   }
@@ -355,19 +383,29 @@
   translate: -99% -2%;
 }
 
-
+.emojis-section button {
+  height: 50px;
+  width: 50px;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5em;
+}
 
 }
 
 /* LARGE */
-@media (min-width: 1000px) {
+@media (min-width: 1100px) {
   html {
     font-size: 16px;
   }
 
   .body-layout {
     display: grid;
-    grid-template-columns: minmax(20px, 1fr) 980px minmax(20px, 1fr);
+    grid-template-columns: minmax(20px, 1fr) 1080px minmax(20px, 1fr);
+  }
+
+  .editor-dialog {
+    max-width: 1000px
   }
 
   h2 {
@@ -376,22 +414,22 @@
   }
 
   .main-layout {
-    max-width: 980px;
+    max-width: 1080px;
   }
 
   .main-content {
 
-    max-width: 980px;
+    max-width: 1080px;
 
   }
 
   .main-header-container {
-    width: 980px;
+    width: 1080px;
     place-self: center;
   }
 
   .gallery {
-    width: 800px;
+    width: 1060px;
     grid-template-columns: repeat(4, 1fr);
     margin: auto;
   }
@@ -406,7 +444,7 @@
   }
 
   .dropbtn {
-    margin-inline-end: 1em;
+    margin-inline-end: 7em;
   }
 
   .data-input {

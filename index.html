@@ -48,24 +48,25 @@
   </header>
 
   <main class="main-content">
-    <div class="menu">
-      <div class="info-icon" onmouseover="showTooltip()" onmouseout="hideTooltip()">
-        <i class="fas fa-info-circle"></i>
-        <div class="tooltip" id="info-tooltip">Click on a word to filter by keyword</div>
-      </div>
-    <section class="searchBy">
-      <button class="keyword kWrd3" onclick="onKeyWordSearch('')">all</button>
-    </section>
-    <button class="nav-link nav-bar-btn" onclick="onImflexible()">I'm flexible</button>
+    <div class="app-menu">
+     
+        
+        
+          <section class="pagination">
+          <button class="prev-page-btn" onclick="prevPage()" title="Previous page"><i class="fas fa-chevron-left"></i></button>
+          <button class="next-page-btn" onclick="nextPage()" title="Next page"><i class="fas fa-chevron-right"></i></button>
+          </section>
+          <div class="tooltip" id="info-tooltip">Click on a word to filter by keyword</div>
+          <i class="fas fa-info-circle"></i>
+          <div class="info-icon" onmouseover="showTooltip()" onmouseout="hideTooltip()"></div>
+          <section class="searchBy">
+          <button class="keyword kWrd3" onclick="onKeyWordSearch('')">all</button>
+          </section>
+          <button class="nav-link nav-bar-btn" onclick="onImflexible()">I'm flexible</button>
     </div>
-    <section class="pagination">
-      <button class="prev-page-btn" onclick="prevPage()" title="Previous page"><i class="fas fa-chevron-left"></i></button>
-      <button class="next-page-btn" onclick="nextPage()" title="Next page"><i class="fas fa-chevron-right"></i></button>
-    </section>
     <section class="gallery"></section>
     <section class="saved-memes" hidden></section>
   </main>
-
           <!-- <div class="resize-button" onclick="activateResizeMode()"><i class="fas fa-expand"></i></div> -->
   <dialog class="dialog">
     <form method="dialog">
@@ -88,6 +89,12 @@
           <button class="switch-line" onclick="onSwitchLine(event)"><img src="img/Icons/up-and-down.png"
               class="icon"></button>
           <button onclick="onDeleteLine()"><img src="img/Icons/trash.png" class="icon"></button>
+          <div>
+            <input type="color" id="txt-color" onchange="onChangeTxtColor(this.value)" title="Text-Color">
+          </div>
+          <div>
+            <input type="color" id="stroke-color" onchange="onChangeStrokeColor(this.value)" title="Stroke-Color">
+          </div>
         </div>
         <div class="control-box2">
            <button onclick="alignText('left')"><img src="img/Icons/align-to-left.png" class="icon"></button>
@@ -99,23 +106,13 @@
           <button class="increase-txt-size" value="10" onclick="onChangeTxtSize(this.value)"><img
               src="img/Icons/increase font - icon.png" class="icon"></button>
         </div>
-        <div class="control-box3">
-          <!-- <button><img src="img/Icons/text stroke.png" class="icon"></button> -->
-          <div>
-            <label for="T">T</label>
-            <input type="color" id="txt-color" onchange="onChangeTxtColor(this.value)" title="Text-Color">
-          </div>
-          <div>
-            <label for="S">S</label>
-            <input type="color" id="stroke-color" onchange="onChangeStrokeColor(this.value)" title="Stroke-Color">
-          </div>
-        </div>
+  
         <div class="share-download">
           <a href="#" onclick="downloadMeme(this)" download="file-name" class="download-link fas fa-download"></a>
           <button onclick="onSaveMeme()" class="save-link fas fa-save"></button>
           <a href="#" onclick="onUploadImg()" class="share-link fas fa-share"></a>
         </div>
-        <div class="emoji">
+        <div class="emojis-section">
         </div>
       </section>
     </div>
