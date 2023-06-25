@@ -272,13 +272,11 @@ function getEvPos(ev) {
 }
 
 function onDown(ev) {
-    const pos = getEvPos(ev);
-
+    const pos = getEvPos(ev)
     if (!isLineClicked) return
-    console.log('enterd')
     setLineDrag(true);
     gStartPos = pos;
-    document.body.style.cursor = 'grabbing';
+    document.body.style.cursor = 'grabbing'
     updateLineButtonsPosition()
 }
 
@@ -308,18 +306,15 @@ function onUp() {
     isRotating = false;
     isLineClicked = false
     rotationAngle = 0;
-    document.body.style.cursor = 'grab';
+    document.body.style.cursor = 'default';
 }
 
-function handleCanvasClick(event) {
-    const { offsetX, offsetY } = event;
-
-    // TODO: GET GMEME FROM MEME SERVICE
+function handleCanvasClick(event) { // TODO: GET GMEME FROM MEME SERVICE
+    const { offsetX, offsetY } = event
     const clickedLine = gMeme.lines.find((line) => {
         const { location } = line;
         const boxWidth = gCtx.measureText(line.txt).width + 40;
         const boxHeight = line.size + 20;
-
         return (
             offsetX >= location.locationX - boxWidth / 2 &&
             offsetX <= location.locationX + boxWidth / 2 &&
@@ -329,19 +324,11 @@ function handleCanvasClick(event) {
     });
 
     if (clickedLine) {
-        onSwitchLineClick(clickedLine);
-        activateTextEditing(clickedLine);
+        onSwitchLineClick(clickedLine)
+        activateTextEditing(clickedLine)
         isLineClicked = true
-        const lineX = clickedLine.location.locationX;
-        const lineY = clickedLine.location.locationY;
-        const boxX = lineX - (gCtx.measureText(clickedLine.txt).width + 40) / 2;
-        const boxY = lineY - clickedLine.size;
-
-        const lineButtons = document.querySelector('.line-buttons');
-        const buttonsLeft = boxX + (gCtx.measureText(clickedLine.txt).width + 40);
-        const buttonsTop = boxY - 30;
-
-        updateLineButtonsPosition();
+        document.body.style.cursor = 'grab';
+        updateLineButtonsPosition()
     }
 }
 

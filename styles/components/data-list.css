@@ -61,5 +61,21 @@
     padding: 8px ;
     cursor: pointer;
   }
+
+  .input-container {
+    position: relative;
+  }
+  
+  .data-input {
+    padding-right: 30px; /* Adjust the value as needed to make space for the icon */
+  }
+  
+  .search-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+  }
+  
   
   

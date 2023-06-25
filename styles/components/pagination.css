@@ -1,0 +1,12 @@
+.prev-page-btn,
+.next-page-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.prev-page-btn:hover,
+.next-page-btn:hover {
+    color: lightslategray;
+}

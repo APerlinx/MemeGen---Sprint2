@@ -28,15 +28,20 @@
             <li><input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" accept="image/*" /></li>
           </ul>
         </li>
-        <li><input class="data-input" list="keywords" onchange="renderGallery()"  placeholder="Search By Keyword">
+        <li>
+          <div class="input-container">
+            <input type="text" class="data-input" list="keywords" onchange="renderGallery()" placeholder="Search By Keyword">
+            <i class="fas fa-search search-icon"></i>
+          </div>
           <datalist id="keywords">
             <option value="funny">
             <option value="animal">
             <option value="bad">
-            <option value="akward">
+            <option value="awkward">
             <option value="Happy">
             <option value="Sad">
-          </datalist></a></li>
+          </datalist>
+        </li>
       </ul>
       <button onclick="toggleMenu()" class="menu-toggle">☰</button>
     </div>
@@ -44,19 +49,28 @@
 
   <main class="main-content">
     <div class="menu">
+      <div class="info-icon" onmouseover="showTooltip()" onmouseout="hideTooltip()">
+        <i class="fas fa-info-circle"></i>
+        <div class="tooltip" id="info-tooltip">Click on a word to filter by keyword</div>
+      </div>
     <section class="searchBy">
       <button class="keyword kWrd3" onclick="onKeyWordSearch('')">all</button>
     </section>
     <button class="nav-link nav-bar-btn" onclick="onImflexible()">I'm flexible</button>
     </div>
-   
+    <section class="pagination">
+      <button class="prev-page-btn" onclick="prevPage()" title="Previous page"><i class="fas fa-chevron-left"></i></button>
+      <button class="next-page-btn" onclick="nextPage()" title="Next page"><i class="fas fa-chevron-right"></i></button>
+    </section>
     <section class="gallery"></section>
     <section class="saved-memes" hidden></section>
   </main>
 
           <!-- <div class="resize-button" onclick="activateResizeMode()"><i class="fas fa-expand"></i></div> -->
-
   <dialog class="dialog">
+    <form method="dialog">
+      <button class="modal-btn"><i class="fas fa-times"></i></button>
+    </form>
     <div class="editor-dialog">
       <div class="canvas-container">
         <canvas id="my-canvas" height="400" width="400"></canvas>
@@ -84,7 +98,6 @@
               src="img/Icons/decrease font - icon.png" class="icon"></button>
           <button class="increase-txt-size" value="10" onclick="onChangeTxtSize(this.value)"><img
               src="img/Icons/increase font - icon.png" class="icon"></button>
-         
         </div>
         <div class="control-box3">
           <!-- <button><img src="img/Icons/text stroke.png" class="icon"></button> -->
@@ -102,20 +115,14 @@
           <button onclick="onSaveMeme()" class="save-link fas fa-save"></button>
           <a href="#" onclick="onUploadImg()" class="share-link fas fa-share"></a>
         </div>
-
         <div class="emoji">
-
         </div>
-
       </section>
-      <form method="dialog">
-        <!-- <button class="modal-btn">Close</button> -->
-      </form>
     </div>
   </dialog>
 
   <footer class="main-footer flex flex-column">
-    <div class="main-logo">MemeGen<span>.</span></div>
+    <div class="main-logo">MemeGen.</div>
     <p>
       © Alon Perlin - <img src="img/Icons/github-logo.png" class="github-icon"> - All Rights Reserved
     </p>

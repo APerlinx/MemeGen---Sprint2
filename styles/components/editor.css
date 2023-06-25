@@ -1,143 +1,172 @@
+canvas {
+  display: block;
+  margin: auto;
+  border: 1px solid black;
+  border-radius: 10px;
+}
 
-  canvas {
-    display: block;
-    margin: auto;
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 10px;
-  }
+.canvas-container {
+  grid-area: canvas;
+  width: 100%;
+  margin: 10px auto;
+}
 
-    .canvas-container {
-    grid-area: canvas;
-    width: 100%; 
-    margin: 10px auto;
-  }
-  
-  .emoji {
-    grid-area: emoji;
-    background-color: #0165E1;
-    opacity: 0.4;
-    border-radius: 10px;
-  }
+.editor-dialog {
+  background-color: rgb(218, 215, 215);
+}
 
-  .editor-txt-container {
-    grid-area: text-line;
-    place-self: center;
-    border-radius: 10px;
-    display: inline-block;
-    padding: 8px 12px;
-    border-radius: 20px;
-    color: #fff;
-    opacity: 0.8;
-  }
+.emoji {
+  grid-area: emoji;
+  background-color: #0165E1;
+  border: 2px solid black;
+  opacity: 0.4;
+  border-radius: 10px;
+}
 
-  .editor-txt-container input {
-    border-radius: 10px;
-    color: black;
-    width: 300px;
-    height: 40px;
-    box-shadow: 1px 0px 0px #1976D2,0px 1px 0px #1976D2, 2px 1px 0px #1976D2,1px 2px 0px #1976D2;
-    font-size: 1.5em
-  }
-  
-  .share-download {
-    grid-area: share-download;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-inline: 5em;
-  }
+.editor-txt-container {
+  grid-area: text-line;
+  place-self: center;
+  border-radius: 10px;
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 20px;
+  color: #fff;
+  opacity: 0.8;
+}
 
-  .share-download a {
-    color: #1976D2;
-    text-decoration: none;
-    display: inline-block;
-    padding: 8px 12px;
-    
-    border-radius: 10px;
-    color: #fff;
-    opacity: 0.8;
-  }
+.editor-txt-container input {
+  border-radius: 10px;
+  color: black;
+  width: 300px;
+  height: 40px;
+  box-shadow: 1px 0px 0px #1976D2, 0px 1px 0px #1976D2, 2px 1px 0px #1976D2, 1px 2px 0px #1976D2;
+  font-size: 1.5em
+}
 
-  .download-link { 
-    background-color: #E1306C;
-  }
+.share-download {
+  grid-area: share-download;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-inline: 5em;
+}
 
-  .share-link {
-    background-color: #0165E1;
-  }
+.share-download a {
+  color: #1976D2;
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 12px;
 
-  .save-link {
-    border-radius: 10px;
-    width: 50px;
-    height: 30px;
-    cursor: pointer;
-    box-shadow: 1px 0px 0px #1976D2,0px 1px 0px #1976D2, 2px 1px 0px #1976D2,1px 2px 0px #1976D2
-  }
+  border-radius: 10px;
+  color: #fff;
+  opacity: 0.8;
+}
 
-  .save-link:hover {
-    background-color: lightslategray;
-    scale: 1.1;
-    transition: 0.3s;
-  }
+.download-link {
+  background-color: #E1306C;
+}
 
-  .share-download a:hover  {
-    background-color: lightslategray;
-    transform: scale(1.1);
-    transition: 0.3s;
-  }
+.share-link {
+  background-color: #0165E1;
+}
 
-  .control-box1 {
-    grid-area: control-box1 ;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-   
-  }
+.save-link {
+  border-radius: 10px;
+  width: 50px;
+  height: 30px;
+  cursor: pointer;
+  box-shadow: 1px 0px 0px #1976D2, 0px 1px 0px #1976D2, 2px 1px 0px #1976D2, 1px 2px 0px #1976D2
+}
 
-  .control-box2 {
-    grid-area: control-box2 ;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-
-  .control-box3 {
-    grid-area: control-box3 ;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    align-items: start;
-  }
-
-  .control-box1 button , .control-box2 button, .control-box3 button {
-    border-radius: 10px;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    box-shadow: 1px 0px 0px #1976D2,0px 1px 0px #1976D2, 2px 1px 0px #1976D2,1px 2px 0px #1976D2
-  }
-
-.control-box1 button:hover , .control-box2 button:hover, .control-box3 button:hover {
+.save-link:hover {
   background-color: lightslategray;
   scale: 1.1;
   transition: 0.3s;
-  }
+}
 
-  .icon {
-    width: 100%;
-  }
+.share-download a:hover {
+  background-color: lightslategray;
+  transform: scale(1.1);
+  transition: 0.3s;
+}
 
-  #txt-color, #stroke-color {
-    border-radius: 10px;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    box-shadow: 1px 0px 0px #1976D2,0px 1px 0px #1976D2, 2px 1px 0px #1976D2,1px 2px 0px #1976D2
-  }
+.control-box1 {
+  grid-area: control-box1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 
+}
 
+.control-box2 {
+  grid-area: control-box2;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.control-box3 {
+  grid-area: control-box3;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: start;
+}
+
+.control-box1 button,
+.control-box2 button,
+.control-box3 button {
+  border-radius: 10px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  box-shadow: 1px 0px 0px #1976D2, 0px 1px 0px #1976D2, 2px 1px 0px #1976D2, 1px 2px 0px #1976D2
+}
+
+.control-box1 button:hover,
+.control-box2 button:hover,
+.control-box3 button:hover {
+  background-color: lightslategray;
+  scale: 1.1;
+  transition: 0.3s;
+}
+
+.icon {
+  width: 100%;
+}
+
+#txt-color,
+#stroke-color {
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 1px 0px 0px #1976D2, 0px 1px 0px #1976D2, 2px 1px 0px #1976D2, 1px 2px 0px #1976D2
+}
+
+#txt-color:hover,
+#stroke-color:hover {
+  background-color: lightslategray;
+  scale: 1.1;
+  transition: 0.3s;
+}
+
+.data-input[type="text"]:focus {
+scale: 1.5;
+}
+
+.modal-btn {
+  position: absolute;
+  top:2%;
+  left: 99%;
+  translate: -99% -2%;
+  border-radius: 555px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.modal-btn:hover {
+background-color: lightslategray;
+}

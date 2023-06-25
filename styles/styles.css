@@ -15,5 +15,7 @@
 @import 'components/main-content.css';
 @import 'components/data-list.css';
 @import 'components/line.css';
+@import 'components/pagination.css';
+@import 'components/tool-tip.css';
 /* Media Queries */
 @import 'mq/mq.css';

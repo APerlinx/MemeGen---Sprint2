@@ -11,6 +11,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 1em;
+  
 }
 
 /* Logo */
@@ -24,17 +25,15 @@
 
 
 .main-header .main-logo:hover {
-  color: lightcoral;
+  color: chocolate;
   transform: scale(1.1);
 }
 
 /* Nav bar */
 
 .main-header .main-nav {
-  text-align: center;
+  text-align: end;
   display: flex;
-  align-items: center;
-  margin-left: 1em;
 }
 
 .main-header .main-nav .nav-link {
@@ -51,7 +50,7 @@
 
 .main-header .main-nav .nav-link:hover,
 .main-nav {
-  color: lightcoral;
+  color: chocolate;
 
 }
 
@@ -64,6 +63,8 @@
 .dropdown {
   width: 100%;
 }
+
+
 
 .dropdown-content {
   position: absolute;
