@@ -321,9 +321,9 @@
     flex-direction: row;
     flex: 1;
     position: absolute;
-    top: 1%;
+    top: 5%;
     left: 50%;
-    translate: -50% -1%;
+    translate: -50% -5%;
   }
 
   .dropdown {
