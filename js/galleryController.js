@@ -48,12 +48,13 @@ function renderPagination() {
   let nextPageBtn = document.querySelector('.next-page-btn')
 
   if (!prevPageBtn) {
-  
     prevPageBtn = document.querySelector('.prev-page-btn')
     prevPageBtn.addEventListener('click', prevPage)
+    prevPageBtn.addEventListener('touchstart', prevPage);
 
     nextPageBtn = document.querySelector('.next-page-btn')
     nextPageBtn.addEventListener('click', nextPage)
+    nextPageBtn.addEventListener('touchstart', nextPage);
   }
 
   if (currentPage === 1) {
