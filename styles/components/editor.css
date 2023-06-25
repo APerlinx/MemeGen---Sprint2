@@ -9,6 +9,7 @@ canvas {
   grid-area: canvas;
   width: 100%;
   margin: 10px auto;
+  
 }
 
 .editor-dialog {
@@ -170,6 +171,8 @@ background-color: lightslategray;
   border-radius: 555px;
   transition: 0.3s;
   cursor: pointer;
+  border: none;
+  background: none;
 }
 
 .modal-btn:hover {

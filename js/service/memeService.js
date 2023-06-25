@@ -4,7 +4,7 @@ const STORAGE_KEY = 'memeDB'
 const gKeyWord = ['funny','bad','animal','happy','sad','baby','cat']
 const gKeywordSearchCountMap = {}
 let gImgs = []
-let gRndLines = ['Yoo', 'Look at you', 'WTF', 'Happy weekend', 'This is what\'s up', ' Wasssssuuuppp']
+let gRndLines = ['When you solve it', 'Look', 'stupid', 'WTF', 'weekend?', ' Wasssssuuuppp']
 _createImgObj()
 let gMeme = {
     selectedImgId: 2,
@@ -12,19 +12,19 @@ let gMeme = {
     lines: [
 
         {
-            defaultTxt: 'Make this MemeGen great',
-            txt: 'Make this MemeGen great',
+            defaultTxt: 'Default text',
+            txt: 'Default text',
             size: 30,
             color: 'White',
-            location: { locationX: 0, locationY: 0 },
+            location: { locationX: 200, locationY: 100 },
             rotationAngle: 0
         },
         {
-            defaultTxt: 'Hello',
-            txt: 'Hello',
+            defaultTxt: 'Default text',
+            txt: 'Default text',
             size: 30,
             color: 'black',
-            location: { locationX: 0, locationY: 0 },
+            location: { locationX: 200, locationY: 20 },
             rotationAngle: 0
         }
 
@@ -51,7 +51,6 @@ function createKeyWordMap() {
 function saveMeme(canvasData) {
     const savedMemes = getSavedMemes();
     savedMemes.push({ img: canvasData });
-
     localStorage.setItem(STORAGE_KEY, JSON.stringify(savedMemes));
 }
 
@@ -63,6 +62,8 @@ function getSavedMemes() {
 function getRndLines() {
    gMeme.lines[0].defaultTxt = gRndLines[getRandomIntInclusive(0, 5)]
    gMeme.lines[0].txt = gRndLines[getRandomIntInclusive(0, 5)]
+   gMeme.lines[1].defaultTxt = gRndLines[getRandomIntInclusive(0, 5)]
+   gMeme.lines[1].txt = gRndLines[getRandomIntInclusive(0, 5)]
 }
 
 function getPrevLineAngle() {
@@ -139,23 +140,18 @@ function setLineTxt(text) {
 
 function deleteLine() {
     if (gMeme.lines.length === 1) {
-    
       const line = gMeme.lines[0];
       line.defaultTxt = 'New Line';
       line.txt = 'New Line';
       line.size = 30;
       line.color = 'White';
-      line.location = { locationX: 0, locationY: 0 };
-
-
+      line.location = { locationX: 200, locationY: 50 };
     } else {
       gMeme.lines.splice(gMeme.selectedLineIdx, 1);
-  
       if (gMeme.selectedLineIdx >= gMeme.lines.length) {
         gMeme.selectedLineIdx = gMeme.lines.length - 1;
       }
     }
-    
     renderMeme();
   }
   
@@ -164,7 +160,7 @@ function resetEditor() {
       line.txt = line.defaultTxt;
       line.color = 'black';
       line.size = 30;
-      // line.location = { locationX: 0, locationY: 0 };
+      line.location = gMeme.lines[index].location
     });
   
     // Set the default values for the first line
@@ -174,6 +170,7 @@ function resetEditor() {
       line1.txt = 'Meme';
       line1.size = 50;
       line1.color = 'White';
+      line1.location = { locationX: 200, locationY: 100 }
     }
   
     // Set the default values for the second line
@@ -183,6 +180,7 @@ function resetEditor() {
       line2.txt = 'Gen';
       line2.size = 30;
       line2.color = 'black';
+      line2.location = { locationX: 200, locationY: 20 }
     }
   }
   

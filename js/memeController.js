@@ -8,7 +8,8 @@ let isResizing = false
 let isRotating = false
 let rotationAngle = 0
 let isLineClicked = false
-let gFirstRender = true
+let gIsAnyLineClicked = 0
+let gSelectedEmoji = null
 
 function onInit() {
     gElCanvas = document.querySelector('#my-canvas');
@@ -17,37 +18,22 @@ function onInit() {
     renderGallery()
     renderKeyWordSeach()
     renderEmojisSection()
+    updateLineButtonsPosition()
 }
 
 function renderMeme() {
-    const meme = getMeme()
-    const img = new Image()
+    const meme = getMeme();
+    const img = new Image();
     img.src = meme.img;
     img.onload = () => {
         gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width;
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
-
         for (let index = 0; index < meme.lines.length; index++) {
-            let line = meme.lines[index]
-            let lineHeight = 70;
-            let xOffset = gElCanvas.width / 2
+            let line = meme.lines[index];
+            let xOffset = 0
             let lineYOffset = 0;
-
-            if (gFirstRender) {
-                line.location = {
-                    locationX: xOffset,
-                    locationY: lineYOffset,
-                }
-                gFirstRender = false;
-            } else {
-                if (meme.lines[index].location) {
-                    xOffset = meme.lines[index].location.locationX || xOffset
-                    lineYOffset = meme.lines[index].location.locationY || lineYOffset
-                }
-            }
-
-            lineYOffset += index * lineHeight + 40;
-
+            xOffset = line.location.locationX
+            lineYOffset = line.location.locationY
             drawText(
                 line.txt,
                 xOffset,
@@ -60,8 +46,20 @@ function renderMeme() {
                 line.stroke
             )
         }
+        gEmojis.map(emoji => {
+            const { x, y, emoji: emojiText, width } = emoji;
+            drawEmoji({ x, y, emoji: emojiText, width })
+        });
     }
-    
+}
+
+function drawEmoji({ x, y, emoji: emojiText, width}) {
+    gCtx.save();
+    gCtx.textAlign = 'center';
+    gCtx.translate(x, y);
+    gCtx.font = `${width}px Impact`;
+    gCtx.fillText(emojiText, 0, 0);
+    gCtx.restore();
 }
 
 function renderKeyWordSeach() {
@@ -79,7 +77,6 @@ function renderKeyWordSeach() {
 }
 
 function onKeyWordSearch(keyword) {
-    console.log('keyword', keyword)
     document.querySelector('.data-input').value = keyword
     renderGallery()
 }
@@ -87,6 +84,7 @@ function onKeyWordSearch(keyword) {
 function onDeleteLine() {
     deleteLine()
     renderMeme()
+    updateLineButtonsPosition()
 }
 
 function onDisplaySavedMemes() {
@@ -112,8 +110,9 @@ function onSaveMeme() {
 }
 
 function onImflexible() {
-    getRndLines()
+    
     onImgSelect(getRandomIntInclusive(0, 18))
+    getRndLines()
     renderMeme()
     openDialog()
 }
@@ -123,7 +122,7 @@ function onImgSelect(imgIdx) {
     const input = document.querySelector('.editor-txt')
     input.value = ''
     setImg(imgIdx)
-    gFirstRender = true
+    updateLineButtonsPosition()
     renderMeme()
 }
 
@@ -138,10 +137,10 @@ function onSwitchLine() {
 }
 
 function onSwitchLineClick(line) {
-    switchLineClick(line)
-    if (!line) return
-    onDefaultLines(line.txt)
-    renderMeme(line)
+    if (!line) return;
+    switchLineClick(line);
+    onDefaultLines(line.txt);
+    renderMeme();
 }
 
 function onAddLine() {
@@ -150,31 +149,30 @@ function onAddLine() {
 }
 
 function drawText(text, x, y, color, size, selectedLineIdx, lineIdx, selectedLine, align = 'center', stroke) {
-    gCtx.fillStyle = color;
-    gCtx.strokeStyle = stroke;
-    gCtx.font = `${size}px Impact`;
-    gCtx.textBaseline = 'middle'; // Update to 'middle' to center the text vertically
-    const meme = getMeme();
-    const line = meme.lines[lineIdx];
+    gCtx.fillStyle = color
+    gCtx.strokeStyle = stroke
+    gCtx.font = `${size}px Impact`
+    gCtx.textBaseline = 'middle'
+    const meme = getMeme()
+    const line = meme.lines[lineIdx]
     if (selectedLineIdx === lineIdx) {
         gCtx.save();
         gCtx.textAlign = align
-        gCtx.translate(x, y);
-        gCtx.rotate(rotationAngle);
-        gCtx.fillText(text, 0, 0);
-        gCtx.strokeText(text, 0, 0);
-        gCtx.restore();
-        drawRect(x, y, size, text, selectedLine, lineIdx, selectedLineIdx);
+        gCtx.translate(x, y)
+        gCtx.rotate(rotationAngle)
+        gCtx.fillText(text, 0, 0)
+        gCtx.strokeText(text, 0, 0)
+        gCtx.restore()
+        drawRect(x, y, size, text, selectedLine, lineIdx, selectedLineIdx)
         line.rotationAngle = rotationAngle;
     } else {
         gCtx.save()
-        gCtx.textAlign = align;
-        gCtx.translate(x, y);
-        gCtx.rotate(getPrevLineAngle());
-        gCtx.fillText(text, 0, 0);
-        gCtx.strokeText(text, 0, 0);
-        gCtx.restore();
-        
+        gCtx.textAlign = align
+        gCtx.translate(x, y)
+        gCtx.rotate(getPrevLineAngle())
+        gCtx.fillText(text, 0, 0)
+        gCtx.strokeText(text, 0, 0)
+        gCtx.restore()
     }
 }
 
@@ -183,9 +181,10 @@ function drawRect(x, y, size, text, selectedLine, lineIdx, selectedLineIdx) {
     const boxPadding = 10;
     const boxX = x - textWidth / 2 - boxPadding;
     const boxY = y - boxPadding;
-    const boxWidth = textWidth + boxPadding * 2;
+    const boxWidth = textWidth + boxPadding * 4;
     const boxHeight = size + boxPadding * 2;
 
+    if (gIsAnyLineClicked === -1) return
     if (selectedLineIdx !== lineIdx) {
         gCtx.beginPath();
         gCtx.rect(boxX, boxY, boxWidth, boxHeight);
@@ -242,7 +241,7 @@ function alignText(align) {
             line.location.locationX = 50;
             break;
         case 'right':
-            line.location.locationX = canvas.width - ctx.measureText(line.txt).width-5;
+            line.location.locationX = canvas.width - ctx.measureText(line.txt).width - 5;
             break;
         case 'center':
             line.location.locationX = (canvas.width - ctx.measureText(line.txt).width) / 2;
@@ -259,7 +258,6 @@ function getEvPos(ev) {
         x: ev.offsetX,
         y: ev.offsetY,
     }
-    console.log('pos', pos);
 
     if (TOUCH_EVS.includes(ev.type)) {
         ev.preventDefault()
@@ -273,41 +271,79 @@ function getEvPos(ev) {
 }
 
 function onDown(ev) {
+    ev.preventDefault()
     const pos = getEvPos(ev)
-    if (!isLineClicked) return
-    setLineDrag(true);
-    gStartPos = pos;
-    document.body.style.cursor = 'grabbing'
-    updateLineButtonsPosition()
+    const { offsetX, offsetY } = ev
+
+    const clickedLine = gMeme.lines.find((line) => {
+
+        const { location } = line;
+        const boxWidth = gCtx.measureText(line.txt).width + 50;
+        const boxHeight = line.size + 50;
+        return (
+            offsetX >= location.locationX - boxWidth / 2 &&
+            offsetX <= location.locationX + boxWidth / 2 &&
+            offsetY >= location.locationY &&
+            offsetY <= location.locationY + boxHeight
+        );
+    });
+    gSelectedEmoji = findEmojiAtPosition(pos.x, pos.y);
+
+    if (clickedLine) {
+        // onSwitchLineClick(clickedLine)
+        // activateTextEditing(clickedLine)
+        setLineClick(1)
+        isLineClicked = true
+        setLineDrag(true);
+        gStartPos = pos;
+        document.body.style.cursor = 'grabbing';
+        gIsAnyLineClicked = 0
+        updateLineButtonsPosition()
+        renderMeme()
+    } else if (gSelectedEmoji) {
+        gSelectedEmoji.setEmojiDrag = true;
+        gSelectedEmoji.offsetX = pos.x - gSelectedEmoji.x;
+        gSelectedEmoji.offsetY = pos.y - gSelectedEmoji.y;
+        document.body.style.cursor = 'grabbing';
+    }
 }
 
 function onMove(ev) {
-    const { isDrag } = getLine();
+    const { isDrag } = getLine()
     if (isRotating) {
-        const pos = getEvPos(ev);
-        const dx = pos.x - gStartPos.x;
-        const dy = pos.y - gStartPos.y;
-        rotationAngle = Math.atan2(dy, dx);
+        const pos = getEvPos(ev)
+        const dx = pos.x - gStartPos.x
+        const dy = pos.y - gStartPos.y
+        rotationAngle = Math.atan2(dy, dx)
         updateLineButtonsPosition()
-        renderMeme();
+        renderMeme()
     } else if (isDrag) {
-        console.log('IsDrag', isDrag);
         const pos = getEvPos(ev)
         const dx = pos.x - gStartPos.x
         const dy = pos.y - gStartPos.y
         moveLine(dx, dy)
         gStartPos = pos
+        setLineClick(1)
         updateLineButtonsPosition()
         renderMeme()
+    } else if (gSelectedEmoji && gSelectedEmoji.setEmojiDrag) {
+        const pos = getEvPos(ev);
+        gSelectedEmoji.x = pos.x - gSelectedEmoji.offsetX;
+        gSelectedEmoji.y = pos.y - gSelectedEmoji.offsetY;
+        renderMeme();
     }
 }
 
 function onUp() {
-    setLineDrag(false);
-    isRotating = false;
+    setLineDrag(false)
+    isRotating = false
     isLineClicked = false
-    rotationAngle = 0;
-    document.body.style.cursor = 'default';
+    rotationAngle = 0
+    document.body.style.cursor = "grab";
+    if (gSelectedEmoji) {
+        gSelectedEmoji.setEmojiDrag = false;
+        gSelectedEmoji = null;
+    }
 }
 
 function handleCanvasClick(event) { // TODO: GET GMEME FROM MEME SERVICE
@@ -321,37 +357,37 @@ function handleCanvasClick(event) { // TODO: GET GMEME FROM MEME SERVICE
             offsetX <= location.locationX + boxWidth / 2 &&
             offsetY >= location.locationY &&
             offsetY <= location.locationY + boxHeight
-        );
-    });
-
+        )
+    })
     if (clickedLine) {
         onSwitchLineClick(clickedLine)
         activateTextEditing(clickedLine)
-        isLineClicked = true
-        document.body.style.cursor = 'grab';
+        
+        gIsAnyLineClicked = 0
         updateLineButtonsPosition()
+    } else {
+        
+        gIsAnyLineClicked = -1
+        updateLineButtonsPosition()
+        renderMeme()
     }
 }
 
 function renderEmojisSection() {
-let emojiContainer = document.querySelector('.emojis-section')
-const emojis = ["😀", "🌞", "🌈", "🌻", "🐶", "🐱", "🍕", "🎉", "⚽", "🚀", "🌊", "🎨", "📷", "🎸", "🍔"];
-emojis.forEach((emoji) => {
-    const button = document.createElement("button");
-    button.textContent = emoji;
-    button.onclick = function () {
-      addEmojis(emoji);
-    };
-    emojiContainer.appendChild(button);
-  });
+    let emojiContainer = document.querySelector('.emojis-section');
+    const emojis = ["😀", "🌞", "🌈", "🌻", "🐶", "🐱", "🍕", "🎉", "⚽", "🚀", "🌊", "🎨", "📷", "🎸", "🍔"];
+    emojis.forEach((emoji) => {
+        const button = document.createElement("button");
+        button.textContent = emoji;
+        button.addEventListener('click', () => {
+            addEmojis(emoji);
+        });
+        emojiContainer.appendChild(button);
+    });
 }
 
-
-function addEmojis(emoji) {
-    var canvas = document.getElementById("my-canvas");
-    var ctx = canvas.getContext("2d");
-    ctx.font = "48px Arial";
-    ctx.fillText(`${emoji}`, getRandomIntInclusive(1,350), getRandomIntInclusive(200,350));
+function clearRect() {
+    isLineClicked = false
 }
 
 function addListeners() {
