@@ -308,7 +308,6 @@
 
   .editor-dialog {
     display: grid;
-    border: 2px solid black;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 10px;
     grid-template-areas:
