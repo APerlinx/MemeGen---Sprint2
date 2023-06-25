@@ -321,9 +321,9 @@
     flex-direction: row;
     flex: 1;
     position: absolute;
-    top: 10%;
+    top: 5%;
     left: 50%;
-    translate: -50% -10%;
+    translate: -50% -5%;
   }
 
   .dropdown {
@@ -397,6 +397,7 @@
   footer {
     grid-column: span 3;
     grid-row: 3;
+    height: auto;
   }
 
   .main-header .main-nav {
